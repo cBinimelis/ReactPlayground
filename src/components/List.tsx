@@ -2,13 +2,14 @@ import { useState } from "react";
 
 type Props = {
   data: string[];
+  onSelect?: (elemento: string) => void;
 };
 
-function List({ data }: Props) {
+function List({ data, onSelect }: Props) {
   const [index, setindex] = useState(0);
-  const handleCLick = (e: string, i: number) => {
-    console.log(e);
+  const handleCLick = (elemento: string, i: number) => {
     setindex(i);
+    onSelect?.(elemento);
   };
   return (
     <ul className="list-group">
